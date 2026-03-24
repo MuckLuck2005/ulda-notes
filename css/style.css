@@ -168,3 +168,15 @@ select {
     color: #475569;
     font-size: 14px;
 }
+ol {
+    padding-left: 24px;
+}
+
+ol li {
+    margin-bottom: 10px;
+}
+
+.section h3 {
+    margin: 24px 0 12px;
+    font-size: 22px;
+}
