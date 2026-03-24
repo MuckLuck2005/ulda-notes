@@ -45,6 +45,9 @@
     <header class="site-header" role="banner">
         <div class="container">
             <p class="site-label">Bachelor Thesis Landing Page</p>
+            <div class="logo-wrap">
+    <img src="assets/img/university-logo.svg" alt="Логотип університету">
+</div>
             <h1>ULDA Notes: лінійна авторизація без серверного стану та шифрування приватних заміток</h1>
 <p class="site-subtitle">
     ULDA Notes: Stateless Linear Authorization and Encryption of Private Notes
@@ -64,24 +67,23 @@
 
     <main id="main-content">
     <section class="hero" aria-labelledby="hero-title">
-        <div class="container">
-            <h2 id="hero-title">Короткий опис роботи</h2>
-            <p>
-                ULDA Notes — це вебзастосунок для приватних нотаток, у якому право на зміну запису
-                перевіряється локально через ULDA-підписи без серверного стану, а вміст зберігається
-                у зашифрованому вигляді.
-            </p>
+    <div class="container">
+        <h2 id="hero-title">Короткий опис роботи</h2>
+        <p>
+            ULDA Notes — це вебзастосунок для приватних нотаток, у якому право на зміну запису
+            перевіряється локально через ULDA-підписи без серверного стану, а вміст зберігається
+            у зашифрованому вигляді.
+        </p>
 
-            <div class="hero-actions">
-                <a class="button" href="https://github.com/MuckLuck2005/ulda-notes" target="_blank" rel="noopener noreferrer" aria-label="Відкрити репозиторій ULDA Notes на GitHub">
-                    GitHub Repository
-                </a>
-                <a class="button button-secondary" href="#about" aria-label="Перейти до секції про проєкт">
-                    Детальніше
-                </a>
-            </div>
+        <div class="hero-note">
+            <p><strong>Технології:</strong> Node.js, MySQL, ULDA-S, ULDA-X, AES-256-GCM</p>
         </div>
-    </section>
+
+        <div class="hero-actions">
+            ...
+        </div>
+    </div>
+</section>
 
     <section id="about" class="section" aria-labelledby="about-title">
         <div class="container">

@@ -327,3 +327,25 @@ ol li {
         width: 100%;
     }
 }
+.logo-wrap {
+    width: fit-content;
+    margin-bottom: 18px;
+}
+
+.logo-wrap img {
+    width: 220px;
+    max-width: 100%;
+}
+
+.hero-note {
+    margin-top: 18px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: rgba(29, 78, 216, 0.08);
+    border: 1px solid rgba(29, 78, 216, 0.14);
+}
+
+.hero-note p {
+    margin-bottom: 0;
+    color: var(--text);
+}
