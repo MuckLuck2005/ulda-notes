@@ -155,3 +155,16 @@ select {
 .nav-list a {
     font-weight: 600;
 }
+.project-figure {
+    margin-top: 24px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #cbd5e1;
+}
+
+.project-figure figcaption {
+    margin-top: 12px;
+    color: #475569;
+    font-size: 14px;
+}
