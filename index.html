@@ -9,18 +9,23 @@
     <meta name="author" content="В. Ю. Дяченко">
     <meta name="robots" content="index, follow">
 
+    <link rel="canonical" href="https://muckluck2005.github.io/ulda-notes/">
+
     <meta property="og:title" content="ULDA Notes — Bachelor Thesis Landing Page">
     <meta property="og:description" content="Лендінг бакалаврської роботи про приватні нотатки, лінійну авторизацію без серверного стану та шифрування даних.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://muckluck2005.github.io/ulda-notes/">
     <meta property="og:locale" content="uk_UA">
+    <meta property="og:site_name" content="ULDA Notes">
 
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
     <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="site-header">
+    <a class="skip-link" href="#main-content">Перейти до основного вмісту</a>
+
+    <header class="site-header" role="banner">
         <div class="container">
             <p class="site-label">Bachelor Thesis Landing Page</p>
             <h1>ULDA Notes</h1>
@@ -28,44 +33,79 @@
                 Лендінг бакалаврської роботи про систему приватних нотаток
                 з лінійною авторизацією та захистом даних.
             </p>
+
+            <nav class="main-nav" aria-label="Основна навігація">
+                <ul class="nav-list">
+                    <li><a href="#about">Про проєкт</a></li>
+                    <li><a href="#relevance">Актуальність</a></li>
+                    <li><a href="#contacts">Контакти</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <main>
-        <section class="hero">
+    <main id="main-content">
+        <section class="hero" aria-labelledby="hero-title">
             <div class="container">
-                <h2>Односторінковий вебсайт про бакалаврський проєкт</h2>
+                <h2 id="hero-title">Односторінковий вебсайт бакалаврської роботи</h2>
                 <p>
-                    На цій сторінці буде представлено тему дослідження, актуальність,
-                    мету, завдання, методологію та очікувані результати бакалаврської роботи.
+                    На цій сторінці представлено структуру лендінгу для бакалаврського
+                    проєкту ULDA Notes із базовими вимогами до SEO, доступності та адаптивності.
                 </p>
 
                 <div class="hero-actions">
-                    <a class="button" href="https://github.com/MuckLuck2005/ulda-notes" target="_blank" rel="noopener noreferrer">
+                    <a class="button" href="https://github.com/MuckLuck2005/ulda-notes" target="_blank" rel="noopener noreferrer" aria-label="Відкрити репозиторій ULDA Notes на GitHub">
                         GitHub Repository
                     </a>
-                    <a class="button button-secondary" href="#about">
+                    <a class="button button-secondary" href="#about" aria-label="Перейти до секції про проєкт">
                         Детальніше
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="section">
+        <section id="about" class="section" aria-labelledby="about-title">
             <div class="container">
-                <h2>Про сторінку</h2>
+                <h2 id="about-title">Про проєкт</h2>
                 <p>
-                    Це базова структура лендінгу, підготовлена в межах лабораторної роботи №2.
-                    Подальші етапи розробки включатимуть SEO, доступність, контентне наповнення,
-                    стилізацію та адаптивність.
+                    ULDA Notes — це концепція вебзастосунку для зберігання приватних нотаток
+                    з акцентом на захист даних, локальну авторизацію та безпечну роботу з контентом.
+                </p>
+            </div>
+        </section>
+
+        <section id="relevance" class="section" aria-labelledby="relevance-title">
+            <div class="container">
+                <h2 id="relevance-title">Актуальність теми</h2>
+                <p>
+                    Питання конфіденційності користувацьких даних та безпечного доступу до них
+                    є важливими для сучасних вебсистем, особливо у випадках роботи з персональними нотатками.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="seo-a11y-title">
+            <div class="container">
+                <h2 id="seo-a11y-title">SEO та доступність</h2>
+                <h3>Що вже реалізовано</h3>
+                <p>
+                    На поточному етапі впроваджено семантичну HTML-структуру, базові метатеги,
+                    заголовкову ієрархію, навігацію з aria-атрибутами та підготовку до подальшого
+                    контентного наповнення.
                 </p>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
+    <footer id="contacts" class="site-footer" aria-labelledby="contacts-title">
         <div class="container">
-            <p>© 2026 ULDA Notes. Bachelor thesis landing page.</p>
+            <h2 id="contacts-title">Контактна інформація</h2>
+            <p>Студент групи ІН-23 — Дяченко В. Ю.</p>
+            <p>
+                <a href="https://github.com/MuckLuck2005/ulda-notes" target="_blank" rel="noopener noreferrer" aria-label="Перейти до GitHub репозиторію проєкту">
+                    GitHub: MuckLuck2005/ulda-notes
+                </a>
+            </p>
         </div>
     </footer>
 

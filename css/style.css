@@ -125,3 +125,33 @@ select {
         font-size: 16px;
     }
 }
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 16px;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 16px;
+}
+
+.main-nav {
+    margin-top: 24px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.nav-list a {
+    font-weight: 600;
+}
