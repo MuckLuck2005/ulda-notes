@@ -9,18 +9,20 @@
     "test": "tests"
   },
   "scripts": {
-  "lint:js": "eslint js/**/*.js",
-  "lint:css": "stylelint \"css/**/*.css\"",
-  "lint:html": "htmlhint \"**/*.html\"",
-  "typecheck": "tsc --project tsconfig.json",
-  "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
-  "check": "npm run lint && npm run typecheck",
-  "prebuild": "npm run check",
-  "build": "node -e \"console.log('Static site build check passed')\"",
-  "docs:generate": "jsdoc -c jsdoc.json",
-  "docs:archive": "powershell -Command \"Compress-Archive -Path generated-docs\\* -DestinationPath generated-docs.zip -Force\"",
-  "docs:check": "eslint js/**/*.js"
-},
+    "dev": "serve . -l 3000",
+    "prod:preview": "npm run check && serve . -l 4173",
+    "lint:js": "eslint js/**/*.js",
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:html": "htmlhint \"**/*.html\"",
+    "typecheck": "tsc --project tsconfig.json",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "check": "npm run lint && npm run typecheck",
+    "prebuild": "npm run check",
+    "build": "node -e \"console.log('Static site build check passed')\"",
+    "docs:generate": "jsdoc -c jsdoc.json",
+    "docs:archive": "powershell -Command \"Compress-Archive -Path generated-docs\\* -DestinationPath generated-docs.zip -Force\"",
+    "docs:check": "eslint js/**/*.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MuckLuck2005/ulda-notes.git"
@@ -39,6 +41,7 @@
     "htmlhint": "^1.9.2",
     "husky": "^9.1.7",
     "jsdoc": "^4.0.5",
+    "serve": "^14.2.6",
     "stylelint": "^17.5.0",
     "stylelint-config-standard": "^40.0.0",
     "typescript": "^6.0.2"
