@@ -1,0 +1,42 @@
+{
+  "name": "ulda-notes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ULDA Notes is a bachelor project repository for a secure private notes web application.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "lint:js": "eslint js/**/*.js",
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:html": "htmlhint \"**/*.html\"",
+    "typecheck": "tsc --project tsconfig.json",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "check": "npm run lint && npm run typecheck",
+    "prebuild": "npm run check",
+    "build": "node -e \"console.log('Static site build check passed')\"",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuckLuck2005/ulda-notes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuckLuck2005/ulda-notes/issues"
+  },
+  "homepage": "https://muckluck2005.github.io/ulda-notes/",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.1.0",
+    "htmlhint": "^1.9.2",
+    "husky": "^9.1.7",
+    "stylelint": "^17.5.0",
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "^6.0.2"
+  }
+}
