@@ -1,1 +1,5 @@
-console.log("ULDA Notes landing page loaded");
+// @ts-check
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Landing page initialized
+});
