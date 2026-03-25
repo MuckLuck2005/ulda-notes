@@ -21,3 +21,21 @@ The project is a web application for creating and storing private notes with a f
 
 ## Status
 Project repository prepared for further development and academic use.
+
+## Documentation rules
+
+All public JavaScript functions in this project should be documented using JSDoc comments.
+
+When updating or adding code, contributors should:
+- describe the purpose of each public function;
+- document parameters with `@param`;
+- document return values with `@returns`;
+- keep comments up to date when logic changes;
+- verify documentation quality before commit.
+
+Useful commands:
+```bash
+npm run docs:generate
+npm run docs:archive
+npm run docs:check
+```
