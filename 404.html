@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULDA Notes — 404</title>
+    <meta name="description" content="Custom 404 error page for ULDA Notes">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .error-card {
+            max-width: 640px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 72px;
+            font-weight: 800;
+            margin: 0 0 16px;
+            color: #7c3aed;
+        }
+
+        .error-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 12px;
+        }
+
+        .error-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 0 0 16px;
+            color: #334155;
+        }
+
+        .error-note {
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 0 24px;
+            color: #64748b;
+        }
+
+        .error-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .button-primary {
+            background: #7c3aed;
+            color: #ffffff;
+        }
+
+        .button-secondary {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            opacity: 0.95;
+        }
+
+        .error-id {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+    <main class="error-card">
+        <p class="error-code">404</p>
+        <h1 class="error-title" id="error-title">Сторінку не знайдено</h1>
+        <p class="error-text" id="error-text">
+            Сторінка, яку ви намагалися відкрити, не існує або була переміщена.
+        </p>
+        <p class="error-note" id="error-note">
+            Перевірте адресу сторінки, поверніться на головну або повідомте про проблему розробника.
+        </p>
+
+        <div class="error-actions">
+            <a class="button button-primary" href="/" id="home-link">На головну</a>
+            <a class="button button-secondary" href="mailto:developer@example.com?subject=ULDA%20Notes%20404%20issue" id="report-link">
+                Повідомити про проблему
+            </a>
+        </div>
+
+        <p class="error-id" id="error-id"></p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/loglevel/dist/loglevel.min.js"></script>
+    <script src="js/logger.js"></script>
+    <script src="js/error-handler.js"></script>
+    <script>
+        (function () {
+            const messages = {
+                uk: {
+                    title: "Сторінку не знайдено",
+                    text: "Сторінка, яку ви намагалися відкрити, не існує або була переміщена.",
+                    note: "Перевірте адресу сторінки, поверніться на головну або повідомте про проблему розробника.",
+                    home: "На головну",
+                    report: "Повідомити про проблему"
+                },
+                en: {
+                    title: "Page not found",
+                    text: "The page you tried to open does not exist or has been moved.",
+                    note: "Check the page address, return to the home page, or report the issue to the developer.",
+                    home: "Go home",
+                    report: "Report a problem"
+                }
+            };
+
+            const lang = (document.documentElement.lang || navigator.language || "").toLowerCase().startsWith("uk")
+                ? "uk"
+                : "en";
+
+            const current = messages[lang];
+            const errorId = typeof crypto !== "undefined" && crypto.randomUUID
+                ? crypto.randomUUID()
+                : `404-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+
+            document.getElementById("error-title").textContent = current.title;
+            document.getElementById("error-text").textContent = current.text;
+            document.getElementById("error-note").textContent = current.note;
+            document.getElementById("home-link").textContent = current.home;
+            document.getElementById("report-link").textContent = current.report;
+            document.getElementById("error-id").textContent = `Error ID: ${errorId}`;
+
+            if (window.ULDA_LOGGER) {
+                window.ULDA_LOGGER.warning("frontend", "404 page opened", {
+                    path: window.location.pathname,
+                    errorId
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
