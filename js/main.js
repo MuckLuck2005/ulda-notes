@@ -32,14 +32,23 @@
     /** @type {MainLogger} */
     const logger = appWindow.ULDA_LOGGER;
 
+    /** @type {HTMLAnchorElement[] | null} */
+    let navigationLinksCache = null;
+
     /**
      * Returns all navigation links from the main page menu.
      * @returns {HTMLAnchorElement[]} Array of navigation links.
      */
     function getNavigationLinks() {
-        return Array.from(
+        if (navigationLinksCache) {
+            return navigationLinksCache;
+        }
+
+        navigationLinksCache = Array.from(
             /** @type {NodeListOf<HTMLAnchorElement>} */ (document.querySelectorAll(".main-nav a"))
         );
+
+        return navigationLinksCache;
     }
 
     /**
@@ -75,7 +84,7 @@
     function setActiveNavigationLink(sectionId) {
         const links = getNavigationLinks();
 
-        links.forEach((link) => {
+        for (const link of links) {
             const href = link.getAttribute("href");
             const isActive = href === `#${sectionId}`;
 
@@ -84,7 +93,7 @@
             } else {
                 link.removeAttribute("aria-current");
             }
-        });
+        }
     }
 
     /**
@@ -132,11 +141,11 @@
             logger.warning("navigation", "No navigation links found on page");
         }
 
-        links.forEach((link) => {
+        for (const link of links) {
             link.addEventListener("click", (event) => {
                 handleNavigationClick(event, link);
             });
-        });
+        }
     }
 
     window.addEventListener("beforeunload", () => {
