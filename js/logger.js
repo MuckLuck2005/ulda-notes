@@ -72,6 +72,12 @@
         critical: "error"
     };
 
+    /** @type {LogEntry[]} */
+    let logCache = [];
+
+    /** @type {number | null} */
+    let persistTimerId = null;
+
     /**
      * @param {unknown} level
      * @returns {LogLevel}
@@ -154,7 +160,7 @@
     /**
      * @returns {LogEntry[]}
      */
-    function getStoredLogs() {
+    function loadStoredLogs() {
         try {
             const raw = localStorage.getItem(STORAGE_KEY);
 
@@ -170,11 +176,24 @@
     }
 
     /**
-     * @param {LogEntry[]} logs
      * @returns {void}
      */
-    function saveStoredLogs(logs) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(logs.slice(-MAX_LOGS)));
+    function persistLogs() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(logCache.slice(-MAX_LOGS)));
+        persistTimerId = null;
+    }
+
+    /**
+     * @returns {void}
+     */
+    function schedulePersist() {
+        if (persistTimerId !== null) {
+            return;
+        }
+
+        persistTimerId = window.setTimeout(() => {
+            persistLogs();
+        }, 50);
     }
 
     /**
@@ -182,9 +201,13 @@
      * @returns {void}
      */
     function appendStoredLog(entry) {
-        const logs = getStoredLogs();
-        logs.push(entry);
-        saveStoredLogs(logs);
+        logCache.push(entry);
+
+        if (logCache.length > MAX_LOGS) {
+            logCache = logCache.slice(-MAX_LOGS);
+        }
+
+        schedulePersist();
     }
 
     /**
@@ -265,6 +288,8 @@
         return entry;
     }
 
+    logCache = loadStoredLogs();
+
     /** @type {AppLogger} */
     const logger = {
         setLevel(level) {
@@ -300,11 +325,17 @@
         },
 
         getLogs() {
-            return getStoredLogs();
+            return logCache.slice();
         },
 
         clearLogs() {
+            logCache = [];
             localStorage.removeItem(STORAGE_KEY);
+
+            if (persistTimerId !== null) {
+                window.clearTimeout(persistTimerId);
+                persistTimerId = null;
+            }
         }
     };
 
